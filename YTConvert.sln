@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YTConvert", "YTConvert\YTCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversion", "Conversion\Conversion.csproj", "{2A28488E-98F7-4A24-B7D0-AD1E4B58493B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YTConvert.Test", "YTConvert.Test\YTConvert.Test.csproj", "{A1C6080D-B708-48D0-BF2D-DF78E6780AB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2A28488E-98F7-4A24-B7D0-AD1E4B58493B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A28488E-98F7-4A24-B7D0-AD1E4B58493B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A28488E-98F7-4A24-B7D0-AD1E4B58493B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C6080D-B708-48D0-BF2D-DF78E6780AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C6080D-B708-48D0-BF2D-DF78E6780AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C6080D-B708-48D0-BF2D-DF78E6780AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C6080D-B708-48D0-BF2D-DF78E6780AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

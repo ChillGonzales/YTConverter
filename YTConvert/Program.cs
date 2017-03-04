@@ -14,6 +14,8 @@ namespace YTConvert
     {
         static void Main(string[] args)
         {
+            var host = new Host("http://localhost:8000/");
+            host.Start();
         }
     }
 }
