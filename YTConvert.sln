@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YTConvert", "YTConvert\YTConvert.csproj", "{B12C6688-398F-459B-A54B-7D886124FB5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversion", "Conversion\Conversion.csproj", "{2A28488E-98F7-4A24-B7D0-AD1E4B58493B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B12C6688-398F-459B-A54B-7D886124FB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B12C6688-398F-459B-A54B-7D886124FB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B12C6688-398F-459B-A54B-7D886124FB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B12C6688-398F-459B-A54B-7D886124FB5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A28488E-98F7-4A24-B7D0-AD1E4B58493B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A28488E-98F7-4A24-B7D0-AD1E4B58493B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A28488E-98F7-4A24-B7D0-AD1E4B58493B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A28488E-98F7-4A24-B7D0-AD1E4B58493B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
