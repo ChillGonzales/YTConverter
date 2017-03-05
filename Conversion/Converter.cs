@@ -9,7 +9,7 @@ namespace Conversion
 {
     public class Converter : IConverter
     {
-        public void Convert(string url)
+        public int Convert(string url)
         {
             var proc = new Process()
             {
@@ -17,10 +17,12 @@ namespace Conversion
                 {
                     WindowStyle = ProcessWindowStyle.Normal,
                     FileName = "CMD.exe",
-                    Arguments = $"youtube-dl -x --audio-quality 0 {url}"
+                    Arguments = $@"/C youtube-dl -x --audio-quality 0 --audio-format m4a -o Videos\%(title)s.%(ext)s {url}"
                 }
             };
             proc.Start();
+            proc.WaitForExit();
+            return proc.ExitCode;
         }
     }
 }

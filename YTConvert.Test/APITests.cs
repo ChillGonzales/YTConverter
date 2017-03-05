@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 
 namespace YTConvert.Test
 {
@@ -17,7 +18,8 @@ namespace YTConvert.Test
             host = new Host(baseAdddr);
             host.Start();
             HttpClient client = new HttpClient();
-            var res = client.PostAsync(baseAdddr + "api/convert", new StringContent(testURL)).Result;
+            JsonMediaTypeFormatter jtf = new JsonMediaTypeFormatter();
+            var res = client.PostAsync<string>(baseAdddr + "api/convert", testURL, jtf).Result;
             Assert.IsTrue(res.IsSuccessStatusCode);
         }
     }

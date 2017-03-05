@@ -1,6 +1,7 @@
 ﻿using Conversion;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -9,20 +10,20 @@ using System.Web.Http;
 
 namespace YTConvert
 {
+    [RoutePrefix("api")]
     public class ConvertController : ApiController
     {
         IConverter _converter;
-        public ConvertController(IConverter converter)
+        public ConvertController()//IConverter converter)
         {
-            if (converter == null)
-            {
-                throw new Exception("DI isn't working!");
-            }
-            this._converter = converter;
+            _converter = new Converter();
+            //this._converter = converter;
         }
-        [Route("api/convert")]
+        [Route("convert")]
+        [HttpPost]
         public HttpResponseMessage Post([FromBody]string url)
         {
+            Debug.WriteLine($"URL is {url}");
             _converter.Convert(url);
             return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
         }
