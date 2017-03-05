@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -13,12 +14,17 @@ namespace YTConvert
         IConverter _converter;
         public ConvertController(IConverter converter)
         {
+            if (converter == null)
+            {
+                throw new Exception("DI isn't working!");
+            }
             this._converter = converter;
         }
         [Route("api/convert")]
-        public void Post([FromBody]string url)
+        public HttpResponseMessage Post([FromBody]string url)
         {
-            bool result = _converter.Convert(url);
+            _converter.Convert(url);
+            return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
         }
     }
 }
