@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -18,7 +19,12 @@ namespace YTConvert
         public AudioStream(string filename, string ext)
         {
             _ext = ext;
-            _filelocation = Assembly.GetExecutingAssembly().Location + @"\" + filename + "." + _ext;
+            _filelocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\Videos\" + filename + "." + _ext;
+        }
+        public AudioStream(AudioStreamRequest request)
+        {
+            _ext = request.Extension;
+            _filelocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\Videos\" + request.Filename + "." + _ext;
         }
         public async void WriteToStream(Stream outputStream, HttpContent content, TransportContext context)
         {
@@ -41,6 +47,7 @@ namespace YTConvert
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 return;
             }
             finally

@@ -32,9 +32,9 @@ namespace YTConvert
         }
         [HttpPost]
         [Route("stream")]
-        public HttpResponseMessage Post([FromBody]string filename, string ext)
+        public HttpResponseMessage Post([FromBody]AudioStreamRequest request)
         {
-            var audio = new AudioStream(filename, ext);
+            var audio = new AudioStream(request);
             var response = Request.CreateResponse();
             response.Content = new PushStreamContent((Action<Stream, HttpContent, TransportContext>)audio.WriteToStream, new MediaTypeHeaderValue("audio/mp4"));
             return response;
