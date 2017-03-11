@@ -22,16 +22,16 @@ namespace YTConvert
             _converter = new Converter();
             //this._converter = converter;
         }
-        [Route("convert")]
         [HttpPost]
+        [Route("convert")]
         public HttpResponseMessage Post([FromBody]string url)
         {
             Debug.WriteLine($"URL is {url}");
             _converter.Convert(url);
             return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
         }
-        [Route("stream")]
         [HttpPost]
+        [Route("stream")]
         public HttpResponseMessage Post([FromBody]string filename, string ext)
         {
             var audio = new AudioStream(filename, ext);
