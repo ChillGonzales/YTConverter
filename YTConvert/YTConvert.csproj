@@ -130,6 +130,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioStream.cs" />
     <Compile Include="ConvertController.cs" />
     <Compile Include="Host.cs" />
     <Compile Include="Program.cs" />
