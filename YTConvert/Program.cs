@@ -15,7 +15,7 @@ namespace YTConvert
     {
         static void Main(string[] args)
         {
-            const string baseAdddr = "http://localhost:8000/";
+            const string baseAdddr = "http://*:8000/";
             //const string testURL = "https://www.youtube.com/watch?v=v4NENjt4KYE";
             HostFactory.Run(x =>
             {

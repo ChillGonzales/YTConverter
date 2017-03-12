@@ -22,6 +22,15 @@ namespace YTConvert
             _converter = new Converter();
             //this._converter = converter;
         }
+        [HttpGet]
+        [Route("convert")]
+        public HttpResponseMessage Get()
+        {
+            var response = new HttpResponseMessage();
+            response.Content = new StringContent("<html><body>You have found the converter page!</body></html>");
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
+            return response;
+        }
         [HttpPost]
         [Route("convert")]
         public HttpResponseMessage Post([FromBody]string url)
