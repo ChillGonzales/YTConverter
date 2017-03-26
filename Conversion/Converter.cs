@@ -9,20 +9,28 @@ namespace Conversion
 {
     public class Converter : IConverter
     {
-        public int Convert(string url)
+        public ConversionResult Convert(string url)
         {
+            var id = url.Split('=')[1];
             var proc = new Process()
             {
                 StartInfo = new ProcessStartInfo()
                 {
                     WindowStyle = ProcessWindowStyle.Normal,
                     FileName = "CMD.exe",
-                    Arguments = $@"/C youtube-dl -x --audio-quality 0 --audio-format m4a -o Videos\%(title)s.%(ext)s {url}"
+                    Arguments = $@"/C youtube-dl -x --audio-quality 0 --audio-format m4a -o Videos\%(id)s.%(ext)s {url}{Environment.NewLine}"
                 }
             };
             proc.Start();
             proc.WaitForExit();
-            return proc.ExitCode;
+            if (proc.ExitCode == 0)
+            {
+                return new ConversionResult() { Extension = "m4a", FileName = $"{id}.m4a", Success = true };
+            }
+            else
+            {
+                return new ConversionResult() { Success = false };
+            }
         }
     }
 }

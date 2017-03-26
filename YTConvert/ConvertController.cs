@@ -36,17 +36,24 @@ namespace YTConvert
         public HttpResponseMessage Post([FromBody]string url)
         {
             Debug.WriteLine($"URL is {url}");
-            _converter.Convert(url);
-            return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
-        }
-        [HttpPost]
-        [Route("stream")]
-        public HttpResponseMessage Post([FromBody]AudioStreamRequest request)
-        {
-            var audio = new AudioStream(request);
+            var result = _converter.Convert(url);
+            if (!result.Success)
+            {
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            }
+            var audioRequest = new AudioStreamRequest() { Filename = result.FileName, Extension = result.Extension };
+            var audio = new AudioStream(audioRequest);
             var response = Request.CreateResponse();
             response.Content = new PushStreamContent((Action<Stream, HttpContent, TransportContext>)audio.WriteToStream, new MediaTypeHeaderValue("audio/mp4"));
             return response;
         }
+        //[HttpPost]
+        //[Route("stream")]
+        //public HttpResponseMessage Post([FromBody]AudioStreamRequest request)
+        //{
+        //    var audio = new AudioStream(request);
+        //    var response = Request.CreateResponse();
+        //    return response;
+        //}
     }
 }

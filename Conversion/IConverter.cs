@@ -8,6 +8,6 @@ namespace Conversion
 {
     public interface IConverter
     {
-        int Convert(string url);
+        ConversionResult Convert(string url);
     }
 }
