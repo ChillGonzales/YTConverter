@@ -15,11 +15,9 @@ namespace YTConvert
     public class AudioStream
     {
         string _filelocation;
-        string _ext;
-        public AudioStream(string filename, string ext)
+        public AudioStream(string filename)
         {
-            _ext = ext;
-            _filelocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\Videos\" + filename + "." + _ext;
+            _filelocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\Videos\" + filename;
         }
         public Action<Stream, HttpContent, TransportContext> GetStreamWriter()
         {

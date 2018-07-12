@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using YTConvert.WebApi.Models;
 
 namespace YTConvert
 {
@@ -29,13 +30,24 @@ namespace YTConvert
         }
         [HttpPost]
         [Route("convert")]
-        public HttpResponseMessage Post([FromBody]string url)
+        public HttpResponseMessage Post(ConvertRequest request)
         {
-            var result = _converter.Convert(url);
-            var audio = new AudioStream(result.FileName, result.Extension);
-            var response = Request.CreateResponse();
-            response.Content = new PushStreamContent(audio.GetStreamWriter(), new MediaTypeHeaderValue("audio/mp4"));
-            return response;
+            try
+            {
+                if (request == null || String.IsNullOrWhiteSpace(request.Url))
+                    throw new ArgumentNullException("url");
+                var result = _converter.Convert(request.Url);
+                var audio = new AudioStream(result.FileName);
+                var response = Request.CreateResponse();
+                response.Content = new PushStreamContent(audio.GetStreamWriter(), new MediaTypeHeaderValue("audio/mp4"));
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var ret = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                ret.Content = new StringContent(ex.ToString());
+                return ret;
+            }
         }
     }
 }

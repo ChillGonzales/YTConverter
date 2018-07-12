@@ -33,10 +33,10 @@ namespace YTConvert.Conversion
             {
                 throw new Exception("An unknown error occurred while starting the command line process.", ex);
             }
-            if (proc.ExitCode == 0)
+            //if (proc.ExitCode > 1)
                 return new ConversionResult() { Extension = "m4a", FileName = $"{id}.m4a" };
-            else
-                throw new Exception("Command line process exited with error code: " + proc.ExitCode);
+            //else
+            //    throw new Exception("Command line process exited with error code: " + proc.ExitCode);
         }
     }
 }
