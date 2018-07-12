@@ -8,7 +8,6 @@ namespace YTConvert.Conversion
 {
     public class ConversionResult
     {
-        public bool Success { get; set; }
         public string FileName { get; set; }
         public string Extension { get; set; }
     }

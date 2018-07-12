@@ -11,26 +11,32 @@ namespace YTConvert.Conversion
     {
         public ConversionResult Convert(string url)
         {
-            var id = url.Split('=')[1];
-            var proc = new Process()
+            Process proc = null;
+            string id = null;
+            try
             {
-                StartInfo = new ProcessStartInfo()
+
+                id = url.Split('=')[1];
+                proc = new Process()
                 {
-                    WindowStyle = ProcessWindowStyle.Normal,
-                    FileName = "CMD.exe",
-                    Arguments = $@"/C youtube-dl -x --audio-quality 0 --audio-format m4a -o Videos\%(id)s.%(ext)s {url}{Environment.NewLine}"
-                }
-            };
-            proc.Start();
-            proc.WaitForExit();
+                    StartInfo = new ProcessStartInfo()
+                    {
+                        WindowStyle = ProcessWindowStyle.Normal,
+                        FileName = "CMD.exe",
+                        Arguments = $@"/C youtube-dl -x --audio-quality 0 --audio-format m4a -o Videos\%(id)s.%(ext)s {url}{Environment.NewLine}"
+                    }
+                };
+                proc.Start();
+                proc.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An unknown error occurred while starting the command line process.", ex);
+            }
             if (proc.ExitCode == 0)
-            {
-                return new ConversionResult() { Extension = "m4a", FileName = $"{id}.m4a", Success = true };
-            }
+                return new ConversionResult() { Extension = "m4a", FileName = $"{id}.m4a" };
             else
-            {
-                return new ConversionResult() { Success = false };
-            }
+                throw new Exception("Command line process exited with error code: " + proc.ExitCode);
         }
     }
 }
