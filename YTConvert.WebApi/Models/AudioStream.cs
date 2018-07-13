@@ -34,7 +34,7 @@ namespace YTConvert
                         while (length > 0 && bytesRead > 0)
                         {
                             bytesRead = audio.Read(buffer, 0, Math.Min(length, buffer.Length));
-                            outputStream.WriteAsync(buffer, 0, bytesRead);
+                            outputStream.WriteAsync(buffer, 0, bytesRead).Wait();
                             length -= bytesRead;
                         }
                     }
