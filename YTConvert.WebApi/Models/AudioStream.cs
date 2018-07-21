@@ -21,7 +21,7 @@ namespace YTConvert
         }
         public Action<Stream, HttpContent, TransportContext> GetStreamWriter()
         {
-            return new Action<Stream, HttpContent, TransportContext>((outputStream, content, context) =>
+            return async (outputStream, content, context) =>
             {
                 try
                 {
@@ -34,7 +34,7 @@ namespace YTConvert
                         while (length > 0 && bytesRead > 0)
                         {
                             bytesRead = audio.Read(buffer, 0, Math.Min(length, buffer.Length));
-                            outputStream.WriteAsync(buffer, 0, bytesRead).Wait();
+                            await outputStream.WriteAsync(buffer, 0, bytesRead);
                             length -= bytesRead;
                         }
                     }
@@ -47,7 +47,7 @@ namespace YTConvert
                 {
                     outputStream.Close();
                 }
-            });
+            };
         }
     }
 }

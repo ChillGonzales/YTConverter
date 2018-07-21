@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YTConvert.WebApi", "YTConve
 		{2A28488E-98F7-4A24-B7D0-AD1E4B58493B} = {2A28488E-98F7-4A24-B7D0-AD1E4B58493B}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YTConvert.IntegrationTest", "YTConvert.IntegrationTest\YTConvert.IntegrationTest.csproj", "{5A25B1EA-BCD7-4EE9-8BEC-07B4B29A7DA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{97A900BD-7AA8-4C53-B537-679F971CD892}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97A900BD-7AA8-4C53-B537-679F971CD892}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97A900BD-7AA8-4C53-B537-679F971CD892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A25B1EA-BCD7-4EE9-8BEC-07B4B29A7DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A25B1EA-BCD7-4EE9-8BEC-07B4B29A7DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A25B1EA-BCD7-4EE9-8BEC-07B4B29A7DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A25B1EA-BCD7-4EE9-8BEC-07B4B29A7DA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
